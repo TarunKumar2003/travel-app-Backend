@@ -39,7 +39,7 @@ const getAllCategories = async (req, res)=>{
         return res.status(200)
             .json({
                 success:true,
-                message:"Hotel data fetched from Db Successfully",
+                message:"all categories fetched from Db Successfully",
                 error:{},
                 data:categories
             })
@@ -53,10 +53,37 @@ const getAllCategories = async (req, res)=>{
          error:{error},
          data:{}
      })
-
    }
 }
+
+// Fetch Single Hotel Data from DB based on ID
+const getSingleHotelData = async (req, res)=>{
+    const { id } = req.params;
+    try {
+        const hotelData = await Hotel.findById(id);
+        if(hotelData){
+                return res.status(200)
+                    .json({
+                        success:true,
+                        message:"Hotel data fetched from Db Successfully",
+                        error:{},
+                        data:hotelData
+                    })
+              }
+        }
+        catch (error) {
+            return res.status(404)
+            .json({
+                success:false,
+                message:"hotekData  Not Found",
+                error:{error},
+                data:{}
+            })
+       }
+}
+
 export {
       getAllHotels,
-      getAllCategories
+      getAllCategories,
+      getSingleHotelData
 }
