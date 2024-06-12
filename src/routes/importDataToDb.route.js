@@ -8,7 +8,7 @@ const dataIntoDbRouter = express.Router();
 
 dataIntoDbRouter.route('/hotels').post(async (req, res)=>{
       try {
-         //await Hotel.remove();
+         await Hotel.deleteMany({});
          const hotel = await Hotel.insertMany(hotels.data);
          return res.status(201).json({
             success: true, 
@@ -24,7 +24,7 @@ dataIntoDbRouter.route('/hotels').post(async (req, res)=>{
 // Define one more Route 
 dataIntoDbRouter.route('/category').post( async (req, res)=>{
     try {
-        //Category.remove();
+        await Category.deleteMany({});
         const allCategories = await Category.insertMany(categories.data);
         return res.status(201).json({
             success: true, 
