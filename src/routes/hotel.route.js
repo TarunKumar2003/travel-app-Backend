@@ -1,10 +1,10 @@
 import express from "express";
-import {getHotels} from "../controllers/hotel.controller.js";
+import {getAllCategories, getAllHotels} from "../controllers/hotel.controller.js";
 //Make the Router 
 const hotelRouter = express.Router();
 
-hotelRouter.get("/all-hotels", getHotels);
-//hotelRouter.get("/all-category", controller);
+hotelRouter.get("/all-hotels", getAllHotels);
+hotelRouter.get("/all-category", getAllCategories);
 
 
 export default hotelRouter;

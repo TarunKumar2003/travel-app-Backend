@@ -1,9 +1,10 @@
 
 import  Hotel  from "../models/hotel.model.js"
-
+import Category from "../models/category.model.js";
 // We are writing All the Controller related to hotel
 
-const getHotels = async (req, res)=>{
+// Fetch All Hotels from the DB
+const getAllHotels = async (req, res)=>{
     //const hotels = await Hotel.find({});
     try {
        const hotels = await Hotel.find({});
@@ -29,6 +30,33 @@ const getHotels = async (req, res)=>{
     }
 }
 
+
+// Fetch All categories from DataBase 
+const getAllCategories = async (req, res)=>{
+   try {
+      const categories = await Category.find({});
+      if(categories){
+        return res.status(200)
+            .json({
+                success:true,
+                message:"Hotel data fetched from Db Successfully",
+                error:{},
+                data:categories
+            })
+      }
+
+   } catch (error) {
+     return res.status(404)
+     .json({
+         success:false,
+         message:"Categories  Not Found",
+         error:{error},
+         data:{}
+     })
+
+   }
+}
 export {
-      getHotels
+      getAllHotels,
+      getAllCategories
 }
