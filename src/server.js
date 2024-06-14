@@ -5,6 +5,7 @@ import hotelRouter from "./routes/hotel.routes.js";
 import userRouter from "./routes/user.routes.js";
 
 import { dataIntoDbRouter } from "./routes/importDataToDb.routes.js";
+import wishListRouter from "./routes/wishlist.routes.js";
 const app = express();
 
 
@@ -31,6 +32,11 @@ app.use("/api/v1/hotels", hotelRouter);
 app.use("/api/v1/hotels-into-db", dataIntoDbRouter);
 app.use("/api/v1/categories-into-db", dataIntoDbRouter);
 //app.use("/api/v1/hotel", hotelRouter);
+
+
+// wishList related Routes
+app.use("/api/v1/wishlist", wishListRouter);
+
 
 
 app.listen(config.PORT,async ()=>{
