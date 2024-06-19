@@ -4,6 +4,9 @@ import Category from "../models/category.model.js";
 // We are writing All the Controller related to hotel
 
 // Fetch All Hotels from the DB
+const getAllHotelsBasedOnCategory = (req, res)=>{
+    
+}
 const getAllHotels = async (req, res)=>{
     //const hotels = await Hotel.find({});
     try {

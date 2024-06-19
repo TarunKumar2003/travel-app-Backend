@@ -9,7 +9,7 @@ const verifyUser = (req, res, next) => {
     return res.sendStatus(401); // Unauthorized
   }
 
-  jwt.verify(token, config.ACCESS_TOKEN_EXPIRY, (err, user) => {
+  jwt.verify(token, config.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) {
       return res.sendStatus(403); // Forbidden
     }

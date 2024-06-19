@@ -80,8 +80,11 @@ const loginUser = async (req, res) => {
         .json({ message: "Authentication failed. Wrong password." });
     }
 
-    const accessToken = await user.generateAccessToken();
-    const refreshToken = await user.generateRefreshToken();
+    const accessToken = jwt.sign(
+      { username: user.username },
+      process.env.ACCESS_TOKEN_SECRET
+    );
+    //const refreshToken = await user.generateRefreshToken();
 
     // Store the refresh token in your database if necessary
     // e.g., user.refreshToken = refreshToken;
@@ -91,7 +94,6 @@ const loginUser = async (req, res) => {
       message: "login Successfully",
       data: user,
       accessToken,
-      refreshToken,
     });
   } catch (error) {
     res.status(500).json({ message: "Internal server error", error });
